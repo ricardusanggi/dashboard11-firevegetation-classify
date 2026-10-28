@@ -1,0 +1,33 @@
+# docker-compose.yml
+version: "3.9"
+
+services:
+
+  backend:
+    build: ./backend
+    container_name: vegetasi_backend
+    ports:
+      - "8011:8011"
+
+    volumes:
+      - ./backend:/app
+      - ./backend/storage:/app/storage
+      # akses docker host
+      - /var/run/docker.sock:/var/run/docker.sock
+
+    env_file:
+      - ./backend/.env
+
+    restart: always
+
+
+  frontend:
+    build:
+      context: ./frontend
+      network: host
+    container_name: vegetasi_frontend
+    ports:
+      - "3011:80"
+    restart: always
+    depends_on:
+      - backend

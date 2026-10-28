@@ -1,0 +1,9 @@
+# navigate to backend directory
+
+#
+cd /Volumes/SembarangData/LearningCode/Apps/dashboard11-firevegetation-classify/backend
+
+# install
+pip install --upgrade pip setuptools wheel
+
+pip install -r requirements.txt
